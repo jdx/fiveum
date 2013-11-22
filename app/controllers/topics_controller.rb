@@ -1,6 +1,4 @@
 class TopicsController < ApplicationController
-  before_filter :authenticate!
-
   def index
     @topics = Topic.order('created_at DESC')
   end

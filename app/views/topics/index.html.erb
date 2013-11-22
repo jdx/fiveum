@@ -2,11 +2,13 @@
   <div class='col-md-6'>
     <h2>Topics</h2>
     <ul class='list-group'>
-      <li class='list-group-item text-center'>
-        <strong>
-          <%= link_to 'New Topic', new_topic_path %>
-        </strong>
-      </li>
+      <% if current_user %>
+        <li class='list-group-item text-center'>
+          <strong>
+            <%= link_to 'New Topic', new_topic_path %>
+          </strong>
+        </li>
+      <% end %>
       <% @topics.each do |topic| %>
         <li class='list-group-item'>
           <%= image_tag topic.user.gravatar_url(size: 40), alt: topic.user.name %>
