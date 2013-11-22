@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FIVEUM</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to "Fiveum", root_path, class: "navbar-brand" %>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <%= image_tag current_user.gravatar_url(size: 20), class: 'pull-left' %>
+            <span><%= current_user.name %></span>
+            <b class="caret"></b>
+          </a>
+          <ul class='dropdown-menu'>
+            <li><%= link_to "Edit Account", edit_user_path(current_user) %></link_to>
+            <li><%= link_to "Log Out", logout_path %></link_to>
+          </ul>
+        </li>
+      <% else %>
+        <li><%= link_to "Log In", login_path %></li>
+        <li><%= link_to "Sign Up", signup_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <% if flash[:error] %>
+      <div class='alert alert-danger alert-dismissable'>
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+    <% if flash[:success] %>
+      <div class='alert alert-success alert-dismissable'>
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+  </div>
+  <%= yield %>
+</div>
+
+</body>
+</html>
