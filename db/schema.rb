@@ -16,10 +16,12 @@ ActiveRecord::Schema.define(version: 20131122001759) do
   create_table "comments", force: true do |t|
     t.text     "body",       null: false
     t.integer  "user_id",    null: false
+    t.integer  "topic_id",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "comments", ["topic_id"], name: "index_comments_on_topic_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "topics", force: true do |t|

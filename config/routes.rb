@@ -8,5 +8,7 @@ Fiveum::Application.routes.draw do
 
   resources :users
 
-  resources :topics
+  resources :topics do
+    resources :comments
+  end
 end
