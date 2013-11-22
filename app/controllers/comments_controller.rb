@@ -6,6 +6,8 @@ class CommentsController < ApplicationController
     comment.user = current_user
     comment.save!
 
+    NotificationMailer.topic_update(topic.user.email, topic.id).deliver
+
     redirect_to topic_path(topic)
   end
 
