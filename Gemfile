@@ -3,10 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
-group :developement do
-  gem 'sqlite3'
-end
-
 group :production do
   gem 'pg'
   gem 'rails_12factor'
@@ -56,4 +52,5 @@ group :development, :test do
   gem 'annotate'
   gem 'pry-rails'
   gem 'awesome_print'
+  gem 'sqlite3'
 end
